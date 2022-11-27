@@ -16,7 +16,7 @@
       -->
       <div class="flex flex-col">
         <% speakers.forEach(( duration, speakerId)=>{ %>
-          <div class="font-bold text-lg mt-8"> Speaker <%= speakerId %>
+          <div class="font-bold text-lg mt-8"> Speaker <%= speakerId +1%>
           </div>
           <div class="text-sm">
             <%= Math.round(duration/60).toString().padStart(2, "0" ) + ":" +
@@ -107,24 +107,37 @@
         },
       },
       data: {
-        labels: speakers.map((_, speakerId) => "Speaker " + speakerId),
+        labels: speakers.map((_, speakerId) => "Speaker " + (speakerId + 1)),
         datasets: [
           {
             label: "Speech duration",
             data: speakers,
+            // backgroundColor:
+            //   // Green gradient. If there are more speakers than
+            //   // background colors, the colors will cycle.
+            //   [
+            //     "#00A971",
+            //     "#34B384",
+            //     "#12CC8E",
+            //     "#14FCA7",
+            //     "#38EDAC",
+            //     "#65F0BF",
+            //     "#66D4AB",
+            //     "#DAFFF2",
+            //     "#FFFFFF",
+            //   ],
+
             backgroundColor:
               // Green gradient. If there are more speakers than
               // background colors, the colors will cycle.
               [
-                "#00A971",
-                "#34B384",
-                "#12CC8E",
-                "#14FCA7",
-                "#38EDAC",
-                "#65F0BF",
-                "#66D4AB",
-                "#DAFFF2",
-                "#FFFFFF",
+                "#36A2EB",
+                "#FF6384",
+                "#4BC0C0",
+                "#FF9F40",
+                "#9966FF",
+                "#FFCD56",
+                "#C9CBCF",
               ],
             borderWidth: 0,
           },

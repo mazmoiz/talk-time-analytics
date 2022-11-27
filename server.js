@@ -98,10 +98,18 @@ async function requestDeepgramAPI({ res, filename, fileUrl, contentType, payload
 
     const transcription = await deepgram.transcription.preRecorded(audioObj, {
       punctuate: true,
-      diarize: true
+      diarize: true,
+      numerals: true,
+      //model: 'meeting',
+      //utterances: true,
     });
 
+    console.log('TRANSCRIPTION -> ', JSON.stringify(transcription));
+
     const speakers = computeSpeakingTime(transcription);
+
+    console.log('SPEAKERS -> ', speakers);
+
     res.render("analytics.ejs", {
       speakers,
       filename,
@@ -209,6 +217,7 @@ app.get("/analyze-test", async (_, res) => {
  */
 function computeSpeakingTime(transcript) {
   const words = transcript.results.channels[0].alternatives[0].words;
+  //const words = transcript.results.utterances[0].words;
 
   if (words.length === 0) {
     return [];
