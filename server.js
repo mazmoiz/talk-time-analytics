@@ -99,8 +99,9 @@ async function requestDeepgramAPI({ res, filename, fileUrl, contentType, payload
     const transcription = await deepgram.transcription.preRecorded(audioObj, {
       punctuate: true,
       diarize: true,
-      numerals: true,
-      //model: 'meeting',
+      //numerals: true,
+      model: 'general-enhanced',
+      //model: 'general',
       //utterances: true,
     });
 
